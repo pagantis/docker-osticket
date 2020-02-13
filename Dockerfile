@@ -62,7 +62,6 @@ COPY src /usr/local/src/osticket
 
 RUN set -ex; \
     \
-    mkdir /usr/local/src/osticket; \
     # Hard link the sources to the public directory
     cp -al /usr/local/src/osticket/. /var/www/html; \
     # Hide setup

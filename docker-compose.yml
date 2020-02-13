@@ -16,6 +16,7 @@ services:
       MYSQL_DATABASE: osticket
       MYSQL_USER: osticket
       MYSQL_PASSWORD: osticket
+      INSTALL: 1 #set 0 or 1 to reinstall the DB tables.
     volumes:
     - ./src:/var/www/html
     ports:
