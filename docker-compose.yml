@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   pg-osticket-db:
     image: mysql:5.7
@@ -16,5 +16,9 @@ services:
       MYSQL_DATABASE: osticket
       MYSQL_USER: osticket
       MYSQL_PASSWORD: osticket
+    volumes:
+    - ./src:/var/www/html
     ports:
       - 9082:80
+    extra_hosts:
+      - "osticket.pagantis.docker:127.0.0.1"

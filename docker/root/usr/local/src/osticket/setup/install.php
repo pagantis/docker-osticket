@@ -6,19 +6,19 @@
 $_SERVER['HTTP_ACCEPT_LANGUAGE'] = getenv("LANGUAGE") ?: "en-us";
 
 $vars = array(
-  'name'      => getenv("INSTALL_NAME")  ?: 'My Helpdesk',
-  'email'     => getenv("INSTALL_EMAIL") ?: 'helpdesk@example.com',
-  'url'       => getenv("INSTALL_URL")   ?: 'http://localhost:8080/',
+  'name'      => getenv("INSTALL_NAME")  ?: 'Pagantis',
+  'email'     => getenv("INSTALL_EMAIL") ?: 'support@pagantis.com',
+  'url'       => getenv("INSTALL_URL")   ?: 'http://osticket.pagantis.docker:9082/',
 
   'fname'       => getenv("ADMIN_FIRSTNAME") ?: 'Admin',
   'lname'       => getenv("ADMIN_LASTNAME")  ?: 'User',
-  'admin_email' => getenv("ADMIN_EMAIL")     ?: 'admin@example.com',
-  'username'    => getenv("ADMIN_USERNAME")  ?: 'ostadmin',
-  'passwd'      => getenv("ADMIN_PASSWORD")  ?: 'Admin1',
-  'passwd2'     => getenv("ADMIN_PASSWORD")  ?: 'Admin1',
+  'admin_email' => getenv("ADMIN_EMAIL")     ?: 'integrations@pagantis.com',
+  'username'    => getenv("ADMIN_USERNAME")  ?: 'pagantis',
+  'passwd'      => getenv("ADMIN_PASSWORD")  ?: 'pagantis',
+  'passwd2'     => getenv("ADMIN_PASSWORD")  ?: 'pagantis',
 
   'prefix'   => getenv("MYSQL_PREFIX")              ?: 'ost_',
-  'dbhost'   => getenv("MYSQL_HOST")                ?: 'mysql',
+  'dbhost'   => getenv("MYSQL_HOST")                ?: 'pg-integrations-gw',
   'dbname'   => getenv("MYSQL_DATABASE")            ?: 'osticket',
   'dbuser'   => getenv("MYSQL_USER")                ?: 'osticket',
   'dbpass'   => getenv("MYSQL_PASSWORD")            ?: getenv("MYSQL_ENV_MYSQL_PASSWORD"),
