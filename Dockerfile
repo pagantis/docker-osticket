@@ -57,18 +57,11 @@ RUN set -ex; \
     # Clean up
     apk del .build-deps; \
     rm -rf /tmp/pear /var/cache/apk/*
-# DO NOT FORGET TO UPDATE "tags" FILE
-ENV OSTICKET_VERSION=1.14.1 \
-    OSTICKET_SHA256SUM=fa751b78fe84212376ab25e867b93c8a45d426917ae7d946f4be216d9b23505f
+
+COPY src /usr/local/src/osticket
+
 RUN set -ex; \
     \
-    wget -q -O osTicket.zip https://github.com/osTicket/osTicket/releases/download/\
-v${OSTICKET_VERSION}/osTicket-v${OSTICKET_VERSION}.zip; \
-    echo "${OSTICKET_SHA256SUM}  osTicket.zip" | sha256sum -c; \
-    unzip osTicket.zip 'upload/*'; \
-    rm osTicket.zip; \
-    mkdir /usr/local/src; \
-    mv upload /usr/local/src/osticket; \
     # Hard link the sources to the public directory
     cp -al /usr/local/src/osticket/. /var/www/html; \
     # Hide setup
@@ -106,7 +99,8 @@ osTicket-slack-plugin/archive/${OSTICKET_SLACK_VERSION}.tar.gz; \
     tar -xzf osTicket-slack-plugin.tar.gz -C /var/www/html/include/plugins --strip-components 1 \
         osTicket-slack-plugin-${OSTICKET_SLACK_VERSION}/slack; \
     rm osTicket-slack-plugin.tar.gz
-COPY root /
+
+COPY docker/root /
 CMD ["start"]
 STOPSIGNAL SIGTERM
 EXPOSE 80

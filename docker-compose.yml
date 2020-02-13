@@ -1,19 +1,20 @@
 version: '3'
 services:
-  mysql:
+  pg-osticket-db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: osticket
       MYSQL_DATABASE: osticket
       MYSQL_USER: osticket
-      MYSQL_PASSWORD: secret
-  osticket:
-    image: devinsolutions/osticket:latest
+      MYSQL_PASSWORD: osticket
+  pg-osticket:
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
-      MYSQL_HOST: mysql
+      MYSQL_HOST: pg-osticket-db
       MYSQL_DATABASE: osticket
       MYSQL_USER: osticket
-      MYSQL_PASSWORD: secret
+      MYSQL_PASSWORD: osticket
     ports:
-      - 8080:80
-    restart: on-failure
+      - 9082:80
